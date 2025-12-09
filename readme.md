@@ -103,69 +103,43 @@ Gunakan data berikut untuk pengujian di Postman:
 
 ## DOKUMENTASI HASIL PENGUJIAN API
 
-Berikut adalah rangkuman hasil pengujian API untuk Praktikum 10 Web Service Engineering. Pengujian mencakup fitur otentikasi dan validasi hak akses (RBAC) pada operasi CRUD.
+Berikut adalah rangkuman hasil pengujian API untuk Praktikum 10 Web Service Engineering dalam format tabel.
 
 ### 1. Skenario Otentikasi (Authentication)
 
-#### A. Login Berhasil (Role: Admin)
-* **Endpoint:** `POST /api/v1/auth/token`
-* **Hasil:** Status `200 OK`. Server berhasil memvalidasi kredensial admin dan mengembalikan *access token* serta data user dengan role admin.
-
-#### B. Login Berhasil (Role: User Biasa)
-* **Endpoint:** `POST /api/v1/auth/token`
-* **Hasil:** Status `200 OK`. Server berhasil memvalidasi kredensial user biasa dan mengembalikan *access token* dengan role user.
-
-#### C. Login Gagal (Password Salah)
-* **Endpoint:** `POST /api/v1/auth/token`
-* **Hasil:** Status `401 Unauthorized`. Sistem keamanan berhasil menolak permintaan login karena password yang dikirimkan tidak sesuai.
+| No | Skenario Pengujian | Endpoint | Hasil Status | Analisis Singkat |
+| :-- | :--- | :--- | :--- | :--- |
+| 1 | **Login Berhasil (Admin)** | `POST /api/v1/auth/token` | `200 OK` | Server memvalidasi kredensial admin dan mengembalikan *access token* dengan role admin. |
+| 2 | **Login Berhasil (User)** | `POST /api/v1/auth/token` | `200 OK` | Server memvalidasi kredensial user biasa dan mengembalikan *access token* dengan role user. |
+| 3 | **Login Gagal** | `POST /api/v1/auth/token` | `401 Unauthorized` | Sistem keamanan berhasil menolak permintaan login karena password/username salah. |
 
 ---
 
 ### 2. Skenario Create Data (POST)
 
-#### A. Admin Membuat Produk (Sukses)
-* **Endpoint:** `POST /api/v1/products/private`
-* **Auth:** Bearer Token (Admin)
-* **Hasil:** Status `201 Created`. Data produk baru berhasil ditambahkan ke database MongoDB karena token memiliki hak akses admin.
-
-#### B. User Biasa Membuat Produk (Gagal - Akses Ditolak)
-* **Endpoint:** `POST /api/v1/products/private`
-* **Auth:** Bearer Token (User)
-* **Hasil:** Status `403 Forbidden`. Permintaan ditolak oleh middleware. User biasa tidak memiliki izin untuk menambahkan data.
-
-#### C. Akses Tanpa Token (Gagal)
-* **Endpoint:** `POST /api/v1/products/private`
-* **Auth:** No Auth
-* **Hasil:** Status `403 Forbidden`. Endpoint private berhasil terlindungi; permintaan tanpa token valid otomatis ditolak.
+| No | Skenario Pengujian | Auth / Role | Hasil Status | Analisis Singkat |
+| :-- | :--- | :--- | :--- | :--- |
+| 1 | **Admin Membuat Produk** | Bearer Token (Admin) | `201 Created` | Data produk baru berhasil ditambahkan ke database karena user memiliki hak akses Admin. |
+| 2 | **User Membuat Produk** | Bearer Token (User) | `403 Forbidden` | Permintaan ditolak. User biasa tidak memiliki izin (*permission*) untuk menambahkan data. |
+| 3 | **Akses Tanpa Token** | Tidak Ada (No Auth) | `403 Forbidden` | Endpoint private terlindungi dengan baik; permintaan tanpa token valid otomatis ditolak. |
 
 ---
 
 ### 3. Skenario Update Data (PUT)
 
-#### A. Admin Mengupdate Produk (Sukses)
-* **Endpoint:** `PUT /api/v1/products/private/{id}`
-* **Auth:** Bearer Token (Admin)
-* **Hasil:** Status `200 OK`. Perubahan data (harga dan deskripsi) berhasil disimpan oleh admin.
-
-#### B. User Biasa Mengupdate Produk (Gagal)
-* **Endpoint:** `PUT /api/v1/products/private/{id}`
-* **Auth:** Bearer Token (User)
-* **Hasil:** Status `403 Forbidden`. Middleware berhasil mencegah user dengan role "user" untuk mengubah data produk yang ada.
+| No | Skenario Pengujian | Auth / Role | Hasil Status | Analisis Singkat |
+| :-- | :--- | :--- | :--- | :--- |
+| 1 | **Admin Mengupdate Produk** | Bearer Token (Admin) | `200 OK` | Perubahan data (harga/deskripsi) berhasil disimpan ke database oleh Admin. |
+| 2 | **User Mengupdate Produk** | Bearer Token (User) | `403 Forbidden` | Middleware berhasil mencegah user dengan role "user" untuk mengubah data produk. |
 
 ---
 
 ### 4. Skenario Delete Data (DELETE)
 
-#### A. Admin Menghapus Produk (Sukses)
-* **Endpoint:** `DELETE /api/v1/products/private/{id}`
-* **Auth:** Bearer Token (Admin)
-* **Hasil:** Status `200 OK`. Produk berhasil dihapus sepenuhnya dari database oleh admin.
-
-#### B. User Biasa Menghapus Produk (Gagal)
-* **Endpoint:** `DELETE /api/v1/products/private/{id}`
-* **Auth:** Bearer Token (User)
-* **Hasil:** Status `403 Forbidden`. Validasi role berfungsi dengan baik; user biasa tidak diizinkan melakukan operasi penghapusan data.
-
+| No | Skenario Pengujian | Auth / Role | Hasil Status | Analisis Singkat |
+| :-- | :--- | :--- | :--- | :--- |
+| 1 | **Admin Menghapus Produk** | Bearer Token (Admin) | `200 OK` | Data produk berhasil dihapus sepenuhnya dari database oleh Admin. |
+| 2 | **User Menghapus Produk** | Bearer Token (User) | `403 Forbidden` | Validasi role berfungsi; user biasa tidak diizinkan melakukan operasi penghapusan data. |
 -----
 
 **Dosen Pengampu:** Muhayat, M.IT
