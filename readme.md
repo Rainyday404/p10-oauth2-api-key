@@ -105,35 +105,35 @@ Gunakan data berikut untuk pengujian di Postman:
 
 Berikut adalah bukti pengujian API menggunakan Postman:
 
-### 1\. Skenario Autentikasi (Login)
+### 1. Skenario Autentikasi (Login)
 
 | Skenario | Bukti Screenshot |
 | :--- | :--- |
-| **Login Sukses (Admin)** |  |
-| **Login Sukses (User)** |  |
-| **Login Gagal (Password Salah)** |  |
+| **Login Sukses (Admin)** | ![Login Admin](evidence/login-admin-200.png) |
+| **Login Sukses (User)** | ![Login User](evidence/login-user-200.png) |
+| **Login Gagal (Password Salah)** | ![Login Gagal](evidence/login-gagal.png) |
 
-### 2\. Skenario CREATE (POST /private)
-
-| Skenario | Bukti Screenshot |
-| :--- | :--- |
-| **Sukses (Role Admin)** |  |
-| **Gagal (Role User Biasa)** |  |
-| **Gagal (Tanpa Token)** |  |
-
-### 3\. Skenario UPDATE (PUT /private/:id)
+### 2. Skenario CREATE (POST /private)
 
 | Skenario | Bukti Screenshot |
 | :--- | :--- |
-| **Sukses (Role Admin)** |  |
-| **Gagal (Role User Biasa)** |  |
+| **Sukses (Role Admin)** | ![Create Sukses](evidence/create-admin-sukses.png) |
+| **Gagal (Role User Biasa)** | ![Create Gagal User](evidence/create-user-gagal.png) |
+| **Gagal (Tanpa Token)** | ![Create No Token](evidence/create-no-token.png) |
 
-### 4\. Skenario DELETE (DELETE /private/:id)
+### 3. Skenario UPDATE (PUT /private/:id)
 
 | Skenario | Bukti Screenshot |
 | :--- | :--- |
-| **Sukses (Role Admin)** |  |
-| **Gagal (Role User Biasa)** |  |
+| **Sukses (Role Admin)** | ![Update Sukses](evidence/update-admin-sukses.png) |
+| **Gagal (Role User Biasa)** | ![Update Gagal User](evidence/update-user-gagal.png) |
+
+### 4. Skenario DELETE (DELETE /private/:id)
+
+| Skenario | Bukti Screenshot |
+| :--- | :--- |
+| **Sukses (Role Admin)** | ![Delete Sukses](evidence/delete-admin-sukses.png) |
+| **Gagal (Role User Biasa)** | ![Delete Gagal User](evidence/delete-user-gagal.png) |
 
 -----
 
