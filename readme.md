@@ -27,3 +27,118 @@ p10-oauth2-api-key-nimanda/
 ├── .env              # Variabel lingkungan (Credentials)
 ├── package.json      # Dependencies
 └── server.js         # Entry point aplikasi
+````
+
+## CARA INSTALASI & MENJALANKAN
+
+### 1\. Prasyarat
+
+Pastikan Anda telah menginstal Node.js dan memiliki akun MongoDB Atlas.
+
+### 2\. Instalasi Dependencies
+
+Jalankan perintah berikut di terminal root proyek:
+
+```bash
+npm init -y
+npm install express mongoose dotenv bcryptjs jsonwebtoken
+```
+
+### 3\. Konfigurasi Lingkungan (.env)
+
+Buat file `.env` di root folder dan isi dengan konfigurasi berikut (gunakan kredensial database Anda sendiri):
+
+```env
+PORT=3000
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/<dbname>?retryWrites=true&w=majority
+JWT_SECRET=rahasia-super-aman-simulasi-jwt
+```
+
+### 4\. Database Seeding (Data Awal)
+
+Sebelum menjalankan server, isi database dengan data awal (User, Produk, dan API Key) menggunakan script seeder:
+
+```bash
+node seeders/seed.js
+```
+
+*Pastikan output menunjukkan "Proses Seeding Database Berhasil\!".*
+
+### 5\. Menjalankan Server
+
+Jalankan server aplikasi:
+
+```bash
+node server.js
+```
+
+Server akan berjalan di `http://localhost:3000`
+
+-----
+
+## KREDENSIAL PENGUJIAN (SEEDER DATA)
+
+Gunakan data berikut untuk pengujian di Postman:
+
+**1. User Admin**
+
+  * Username: `admin`
+  * Password: `password123`
+  * Role: `admin`
+  * Keterangan: Bisa melakukan CRUD (POST, PUT, DELETE)
+
+**2. User Biasa**
+
+  * Username: `userbiasa`
+  * Password: `userpass`
+  * Role: `user`
+  * Keterangan: Hanya bisa Login, tidak bisa CRUD
+
+**3. API Key**
+
+  * Key: `PRACTICUM_API_KEY_A_1234567890`
+  * Keterangan: Masukkan di Header `x-api-key`
+
+-----
+
+## DOKUMENTASI / BUKTI PENGUJIAN
+
+Berikut adalah bukti pengujian API menggunakan Postman:
+
+### 1\. Skenario Autentikasi (Login)
+
+| Skenario | Bukti Screenshot |
+| :--- | :--- |
+| **Login Sukses (Admin)** |  |
+| **Login Sukses (User)** |  |
+| **Login Gagal (Password Salah)** |  |
+
+### 2\. Skenario CREATE (POST /private)
+
+| Skenario | Bukti Screenshot |
+| :--- | :--- |
+| **Sukses (Role Admin)** |  |
+| **Gagal (Role User Biasa)** |  |
+| **Gagal (Tanpa Token)** |  |
+
+### 3\. Skenario UPDATE (PUT /private/:id)
+
+| Skenario | Bukti Screenshot |
+| :--- | :--- |
+| **Sukses (Role Admin)** |  |
+| **Gagal (Role User Biasa)** |  |
+
+### 4\. Skenario DELETE (DELETE /private/:id)
+
+| Skenario | Bukti Screenshot |
+| :--- | :--- |
+| **Sukses (Role Admin)** |  |
+| **Gagal (Role User Biasa)** |  |
+
+-----
+
+**Dosen Pengampu:** Muhayat, M.IT
+
+````
+
+---
