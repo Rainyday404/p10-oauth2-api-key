@@ -48,27 +48,27 @@ p10-oauth2-api-key/
 
 ## 📸 Bukti Pengujian (Test Evidence)
 
-Berikut adalah daftar skenario pengujian yang telah dilakukan dan buktinya tersimpan dalam folder `/evidence`:
+Berikut adalah daftar skenario pengujian yang telah dilakukan dan buktinya tersimpan dalam folder `/evidence`.
 
 ### 1. Otentikasi (Auth)
 
 | Skenario | Status Code | Bukti Gambar |
 | --- | --- | --- |
-| **Login Admin** | `200 OK` | `evidence/login-admin-200.png` |
-| **Login User Biasa** | `200 OK` | `evidence/login-user-200.png` |
-| **Login Gagal** (Password Salah) | `401 Unauthorized` | `evidence/login-gagal.png` |
+| **Login Admin** | `200 OK` | <img src="evidence/login-admin-200.png" width="350" alt="Login Admin"> |
+| **Login User Biasa** | `200 OK` | <img src="evidence/login-user-200.png" width="350" alt="Login User"> |
+| **Login Gagal** (Password Salah) | `401 Unauthorized` | <img src="evidence/login-gagal.png" width="350" alt="Login Gagal"> |
 
 ### 2. Manajemen Produk (CRUD & RBAC)
 
 | Skenario | Aktor | Hasil | Bukti Gambar |
 | --- | --- | --- | --- |
-| **Create Product** | Admin | **Sukses** | `evidence/create-admin-sukses.png` |
-| **Create Product** | User | **Gagal (403)** | `evidence/create-user-gagal.png` |
-| **Create Product** | Anonim | **Gagal (403)** | `evidence/create-no-token.png` |
-| **Update Product** | Admin | **Sukses** | `evidence/update-admin-sukses.png` |
-| **Update Product** | User | **Gagal (403)** | `evidence/update-user-gagal.png` |
-| **Delete Product** | Admin | **Sukses** | `evidence/delete-admin-sukses.png` |
-| **Delete Product** | User | **Gagal (403)** | `evidence/delete-user-gagal.png` |
+| **Create Product** | Admin | **Sukses** | <img src="evidence/create-admin-sukses.png" width="350" alt="Create Admin"> |
+| **Create Product** | User | **Gagal (403)** | <img src="evidence/create-user-gagal.png" width="350" alt="Create User Gagal"> |
+| **Create Product** | Anonim | **Gagal (403)** | <img src="evidence/create-no-token.png" width="350" alt="Create No Token"> |
+| **Update Product** | Admin | **Sukses** | <img src="evidence/update-admin-sukses.png" width="350" alt="Update Admin"> |
+| **Update Product** | User | **Gagal (403)** | <img src="evidence/update-user-gagal.png" width="350" alt="Update User Gagal"> |
+| **Delete Product** | Admin | **Sukses** | <img src="evidence/delete-admin-sukses.png" width="350" alt="Delete Admin"> |
+| **Delete Product** | User | **Gagal (403)** | <img src="evidence/delete-user-gagal.png" width="350" alt="Delete User Gagal"> |
 
 ---
 
@@ -118,7 +118,5 @@ node server.js
 | **User** | `userbiasa` | `userpass` |
 
 **API Key Publik:** `API_KEY_RAIN_SECRET_123`
-
-```
 
 ```
